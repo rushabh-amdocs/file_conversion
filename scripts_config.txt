@@ -1,0 +1,35 @@
+# Scripts Configuration
+# Note: Paths like copybook, expfd, application, FORMAT_PATH, INPUT_PATH, OUTPUT_PATH are read directly from path.txt
+# Only define paths here that are NOT in path.txt
+
+# Base Path for bulk conversion and other operations
+#bulk_conversion_base_PATH=C:/File_conversion/
+
+# Copy Bulk Configuration
+COPY_SOURCE_PATH=C:/File_conversion/occ/output
+COPY_DEST_PATH=D:/File_conversion/File_conversion/rushabh/automation/FILE_CONVERSION/bulk_conversion/RBS/format
+COPY_INPUT_FILE=IGD.txt
+
+# DataTurn Configuration
+DATATURN_EXE_PATH=C:/Program Files/Anubex/DataTurn/bin/dataturn.exe
+DATATURN_CONFIG_FILE=rushabh.configuration
+
+# Bulk Conversion Configuration
+# Note: Bulk conversion uses BASE_PATH and app name from the form to generate paths dynamically
+# All logs are saved in the centralized logging system (logs/ConvertFlow_YYYYMMDD.log)
+BULK_DOWITCHER_PATH=C:/File_conversion/dowitcher.exe
+
+# AWS S3 Copy Configuration
+S3_BUCKET=sandboxdee01s3att01
+S3_PATH_PREFIX=file_Conversion
+LOCAL_DATA_PATH=C:/File_conversion
+
+# FF File Mapping Configuration
+FF_MAPPING_SOURCE=D:\File_conversion\File_conversion\Rupali\ME\output
+FF_MAPPING_DEST=D:\File_conversion\File_conversion\Application_details\ME\converted_data
+FF_MAPPING_CSV=D:/File_conversion/File_conversion/Rupali/ME.csv
+
+# File Retrieval Configuration
+FILE_RETRIEVAL_LIST=C:/File_conversion/file_list.txt
+FILE_RETRIEVAL_SOURCE=D:/Wave1/Drop4/BAD_DEBT/RL81B25L
+FILE_RETRIEVAL_DEST=D:/File_conversion/File_conversion/rushabh/automation/FILE_CONVERSION/bulk_conversion/badebt/input

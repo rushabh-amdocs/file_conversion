@@ -1,0 +1,6 @@
+# Large log files
+logs/*.log
+logs/
+
+# Large ZIP files
+demo/occ/input/*.zip

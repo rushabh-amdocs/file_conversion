@@ -1,0 +1,140 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram id="FileConversionFlow" name="File Conversion Process">
+    <mxGraphModel dx="2605" dy="1805" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1250" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="File Conversion Process Flow" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#2563EB;" parent="1" vertex="1">
+          <mxGeometry x="400" y="30" width="600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="step1" value="&lt;b&gt;Step 1: Copybook&lt;/b&gt;&lt;br&gt;&lt;br&gt;COBOL Copybook File&lt;br&gt;(.cpy, .cbl)&lt;br&gt;&lt;br&gt;Defines the structure of&lt;br&gt;mainframe data records" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2563EB;strokeColor=#1E40AF;fontColor=#FFFFFF;fontSize=14;align=center;verticalAlign=middle;spacing=10;" parent="1" vertex="1">
+          <mxGeometry x="100" y="120" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#3B82F6;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="step1" target="step2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow1label" value="EXPFD_creation.py&lt;br&gt;converts copybook" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#3B82F6;fontStyle=1;backgroundColor=#E0F2FE;rounded=1;" parent="arrow1" vertex="1" connectable="0">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="10" y="-22" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="step2" value="&lt;b&gt;Step 2: EXPFD File&lt;/b&gt;&lt;br&gt;&lt;br&gt;Format Description File&lt;br&gt;(.expfd, .fmt)&lt;br&gt;&lt;br&gt;DataTurn-compatible&lt;br&gt;format specification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E40AF;strokeColor=#1E3A8A;fontColor=#FFFFFF;fontSize=14;align=center;verticalAlign=middle;spacing=10;" parent="1" vertex="1">
+          <mxGeometry x="450" y="120" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#3B82F6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="step2" target="step3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow2label" value="DataTurn&lt;br&gt;uses EXPFD to convert&lt;br&gt;EBCDIC to ASCII" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#3B82F6;fontStyle=1;backgroundColor=#E0F2FE;rounded=1;" parent="arrow2" vertex="1" connectable="0">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="70" y="5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="step3" value="&lt;b&gt;Step 3: DataTurn&lt;/b&gt;&lt;br&gt;&lt;br&gt;Anubex DataTurn Tool&lt;br&gt;&lt;br&gt;• Reads EBCDIC data&lt;br&gt;• Uses EXPFD format&lt;br&gt;• Converts to ASCII&lt;br&gt;• Creates repository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#16A34A;strokeColor=#15803D;fontColor=#FFFFFF;fontSize=14;align=left;verticalAlign=middle;spacing=10;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="450" y="340" width="220" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#3B82F6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="step3" target="step3_5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow3label" value="FF files&lt;br&gt;modification" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#3B82F6;fontStyle=1;backgroundColor=#E0F2FE;rounded=1;" parent="arrow3" vertex="1" connectable="0">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="60" y="5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="step3_5" value="&lt;b&gt;Step 3.5: FF Modify&lt;/b&gt;&lt;br&gt;&lt;br&gt;File Format Modification&lt;br&gt;&lt;br&gt;• Modify .ff files&lt;br&gt;• Adjust formatting&lt;br&gt;• Prepare for conversion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A855F7;strokeColor=#9333EA;fontColor=#FFFFFF;fontSize=14;align=left;verticalAlign=middle;spacing=10;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="450" y="565" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow3_5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#3B82F6;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="step3_5" target="step4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow3_5label" value="Dowitcher&lt;br&gt;conversion" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#3B82F6;fontStyle=1;backgroundColor=#E0F2FE;rounded=1;" parent="arrow3_5" vertex="1" connectable="0">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="-10" y="-22" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="step4" value="&lt;b&gt;Step 4: Dowitcher&lt;/b&gt;&lt;br&gt;&lt;br&gt;Final Conversion Tool&lt;br&gt;&lt;br&gt;• Format validation&lt;br&gt;• Data transformation&lt;br&gt;• Output generation&lt;br&gt;• Quality checks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DC2626;strokeColor=#B91C1C;fontColor=#FFFFFF;fontSize=14;align=left;verticalAlign=middle;spacing=10;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="100" y="560" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#3B82F6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="step4" target="output" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow4label" value="Converted Files" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#3B82F6;fontStyle=1;backgroundColor=#E0F2FE;rounded=1;" parent="arrow4" vertex="1" connectable="0">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="output" value="&lt;b&gt;Step 5: Converted Output&lt;/b&gt;&lt;br&gt;&lt;br&gt;ASCII Text Files&lt;br&gt;(.txt, .dat)&lt;br&gt;&lt;br&gt;Initial conversion&lt;br&gt;complete" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22C55E;strokeColor=#16A34A;fontColor=#FFFFFF;fontSize=14;align=center;verticalAlign=middle;spacing=10;" parent="1" vertex="1">
+          <mxGeometry x="100" y="780" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#3B82F6;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="output" target="step6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow5label" value="file_mapping.sh&lt;br&gt;organizes files" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#3B82F6;fontStyle=1;backgroundColor=#E0F2FE;rounded=1;" parent="arrow5" vertex="1" connectable="0">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="10" y="-22" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="step6" value="&lt;b&gt;Step 6: FF Mapping&lt;/b&gt;&lt;br&gt;&lt;br&gt;File Organization&lt;br&gt;&lt;br&gt;• Map files using CSV&lt;br&gt;• Organize by folders&lt;br&gt;• Rename files&lt;br&gt;• Structure data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0EA5E9;strokeColor=#0284C7;fontColor=#FFFFFF;fontSize=14;align=left;verticalAlign=middle;spacing=10;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="460" y="780" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;strokeColor=#22C55E;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="step7" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="850" as="sourcePoint" />
+            <mxPoint x="780" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow6label" value="copy_s3.sh&lt;br&gt;uploads to cloud" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontColor=#22C55E;fontStyle=1;backgroundColor=#F0FDF4;rounded=1;" parent="arrow6" vertex="1" connectable="0">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint x="27" y="-18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="step7" value="&lt;b&gt;Step 7: AWS S3 Upload&lt;/b&gt;&lt;br&gt;&lt;br&gt;Cloud Storage&lt;br&gt;&lt;br&gt;• Upload to S3 bucket&lt;br&gt;• sandboxdee01s3att01&lt;br&gt;• Archive data&lt;br&gt;• Ready for deployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F97316;strokeColor=#EA580C;fontColor=#FFFFFF;fontSize=14;align=left;verticalAlign=middle;spacing=10;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="890" y="780" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="input" value="&lt;b&gt;Input Data&lt;/b&gt;&lt;br&gt;&lt;br&gt;EBCDIC Files&lt;br&gt;from Mainframe" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F59E0B;strokeColor=#D97706;fontColor=#FFFFFF;fontSize=14;align=center;verticalAlign=middle;spacing=10;dashed=1;dashPattern=8 8;" parent="1" vertex="1">
+          <mxGeometry x="740" y="370" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="inputArrow" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#F59E0B;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="input" target="step3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inputArrowLabel" value="EBCDIC Data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontColor=#F59E0B;fontStyle=1;" parent="inputArrow" vertex="1" connectable="0">
+          <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
+            <mxPoint y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="config" value="&lt;b&gt;Configuration&lt;/b&gt;&lt;br&gt;&lt;br&gt;• path.txt&lt;br&gt;• scripts_config.txt&lt;br&gt;• Repository paths&lt;br&gt;• Tool locations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6366F1;strokeColor=#4F46E5;fontColor=#FFFFFF;fontSize=12;align=left;verticalAlign=middle;spacing=10;spacingLeft=15;dashed=1;dashPattern=8 8;" parent="1" vertex="1">
+          <mxGeometry x="737" y="560" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1E293B;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="120" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2563EB;strokeColor=#1E40AF;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="160" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend1text" value="Source Files" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#1E293B;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="157" width="150" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#16A34A;strokeColor=#15803D;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="190" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2text" value="Conversion Tools" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#1E293B;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="187" width="150" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="legend3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#22C55E;strokeColor=#16A34A;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="220" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend3text" value="Output Files" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#1E293B;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="217" width="150" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="legend4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F59E0B;strokeColor=#D97706;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="250" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend4text" value="Input/Config" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#1E293B;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="247" width="150" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="File Conversion Process - Astadia TEAM" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#64748B;fontStyle=2;" parent="1" vertex="1">
+          <mxGeometry x="450" y="1180" width="500" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

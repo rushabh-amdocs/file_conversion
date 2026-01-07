@@ -1,0 +1,2 @@
+StripRecLen is the maximum number of characters in a line after all trailing spaces and low-values have been removed
+RecordType,RecordLength,StripRecLen,NumberOfRecords

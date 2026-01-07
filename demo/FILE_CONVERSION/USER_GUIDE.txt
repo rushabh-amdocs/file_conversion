@@ -1,0 +1,615 @@
+# File Conversion Studio - User Guide
+
+**Version 2.0 - A Step-by-Step Guide for Non-Technical Users**
+
+**Last Updated:** November 14, 2025
+
+---
+
+## 📚 Table of Contents
+
+1. [Getting Started](#getting-started)
+2. [Understanding the Interface](#understanding-the-interface)
+3. [Setting Up Your First Project](#setting-up-your-first-project)
+3. [Converting Files](#converting-files)
+4. [Viewing Your Data](#viewing-your-data)
+5. [Advanced Features](#advanced-features)
+6. [Tips and Best Practices](#tips-and-best-practices)
+7. [Troubleshooting Common Issues](#troubleshooting-common-issues)
+8. [Frequently Asked Questions](#frequently-asked-questions)
+
+---
+
+## 🚀 Getting Started
+
+### What is File Conversion Studio?
+
+File Conversion Studio is a tool that helps you convert mainframe files (EBCDIC format) to a format that can be read on regular computers (ASCII format). Think of it as a translator that converts old mainframe data into modern computer data.
+
+### Starting the Application
+
+**Method 1: Using the .exe file (Easiest)**
+
+1. Find the `file_conversion.exe` file in your folder
+2. Double-click on it
+3. A black window will open with a configuration prompt
+4. **Choose your port number**:
+   - You'll see: `Enter port number to run the server (default: 3355):`
+   - Press **Enter** to use port 3355 (recommended)
+   - OR type a different number (like 5000 or 8080) and press Enter
+5. Wait for the message: `Running on http://127.0.0.1:XXXX` (where XXXX is your port)
+6. Open your web browser (Chrome, Edge, Firefox)
+7. Type in the address bar: `http://localhost:XXXX` (replace XXXX with your port number)
+8. Press Enter
+
+**Examples**:
+- If you used default (3355): Type `http://localhost:3355`
+- If you entered 5000: Type `http://localhost:5000`
+- If you entered 8080: Type `http://localhost:8080`
+
+**Important:** Keep the black window open while using the tool. Closing it will stop the application.
+
+### What You'll See
+
+When you open the application, you'll see:
+- **Title**: "🚀 File Conversion Studio"
+- **Two input fields**: For entering file names and record ranges
+- **10 colorful buttons**: Each performs a different task
+- **Footer**: Shows "Powered by Astadia TEAM"
+
+---
+
+## 🖥️ Understanding the Interface
+
+### Main Screen Layout
+
+```
+┌─────────────────────────────────────────┐
+│  🚀 File Conversion Studio              │
+├─────────────────────────────────────────┤
+│  📂 File Name: [____________]           │
+│  📋 Records: [____________]             │
+├─────────────────────────────────────────┤
+│  [Button 1] [Button 2] [Button 3]       │
+│  [Button 4] [Button 5] [Button 6]       │
+│  [Button 7] [Button 8] [Button 9]       │
+│  [Button 10]                            │
+└─────────────────────────────────────────┘
+```
+
+### Input Fields Explained
+
+#### 📂 File Name (without extension)
+- **What it is**: The name of your file WITHOUT the .txt or .ff extension
+- **Example**: If your file is `CUSTOMER.txt`, just type `CUSTOMER`
+- **When to use**: For most operations like conversion, display, etc.
+
+#### 📋 Records (optional)
+- **What it is**: Specific lines or ranges of lines you want to work with
+- **Examples**: 
+  - `5` - Just line 5
+  - `1-10` - Lines 1 through 10
+  - `100-200` - Lines 100 through 200
+- **When to use**: When you want to work with specific records, not the whole file
+
+---
+
+## 🎯 Setting Up Your First Project
+
+### Step 1: Create Folder Structure
+
+This creates all the folders you need for a new project.
+
+1. **In the File Name field**, type your project name (e.g., `CUSTOMER_PROJECT`)
+2. **Click** the "📁 Create Folder Structure" button
+3. **Wait** for the green success message
+4. **Result**: Folders are created automatically:
+   - `input` - Put your original files here
+   - `output` - Converted files appear here
+   - `FF_FILES/datamig/file-format` - Put your format files (.ff) here
+   - `datamatch/source` - Source files for comparison
+   - `datamatch/target` - Target files for comparison
+
+### Step 2: Open Project Folders
+
+This opens all your project folders at once so you can add files.
+
+1. **In the File Name field**, type your project name (same as Step 1)
+2. **Click** the "🗂️ Open Project Folders" button
+3. **Result**: Five Windows Explorer windows open showing your folders
+
+### Step 3: Add Your Files
+
+1. **In the `input` folder**: Copy your .txt files (the files you want to convert)
+2. **In the `FF_FILES/datamig/file-format` folder**: Copy your .ff files (format definition files)
+
+**Important**: Each .txt file needs a matching .ff file with the same name!
+- ✅ Correct: `CUSTOMER.txt` + `CUSTOMER.ff`
+- ❌ Wrong: `CUSTOMER.txt` + `ORDER.ff`
+
+---
+
+## 🔄 Converting Files
+
+### Single File Conversion
+
+**When to use**: Converting one file at a time
+
+1. **Type the file name** (without .txt extension) in the File Name field
+   - Example: `CUSTOMER`
+2. **Click** "🔧 Run Dowitcher (Convert to ASCII)"
+3. **Wait** for the process to complete
+4. **Check the output** at the bottom of the screen
+5. **Look for**: 
+   - ✅ Green text = Success!
+   - ❌ Red text = Error (check the message)
+
+### Bulk Conversion
+
+**When to use**: Converting many files at once
+
+1. **Make sure** all your .txt files are in the `input` folder
+2. **Make sure** all matching .ff files are in the `FF_FILES/datamig/file-format` folder
+3. **Type your project name** in the File Name field
+4. **Click** "📦 Bulk Conversion"
+5. **Wait** - this may take a few minutes for many files
+6. **Review the summary**:
+   - **Total**: How many files were found
+   - **Success**: ✅ Files converted successfully (green)
+   - **Errors**: ❌ Files that failed (red)
+   - **Skipped**: ⚠️ Files without matching .ff files (red)
+
+**Reading the Results**:
+```
+Total: 10 files | Success: 7 | Errors: 0 | Skipped: 3
+```
+This means:
+- 10 files were found
+- 7 converted successfully
+- 0 had errors
+- 3 were skipped because their .ff files were missing
+
+---
+
+## 👁️ Viewing Your Data
+
+### Display Output
+
+**Purpose**: View your converted files
+
+1. **Type the file name** in the File Name field
+2. **Leave Records blank** to see all records, or type a range (e.g., `1-10`)
+3. **Click** "👁️ Display Output"
+4. **Result**: See your converted data
+
+### Display with Hex
+
+**Purpose**: See both text and hexadecimal values (for technical debugging)
+
+1. **Type the file name** in the File Name field
+2. **Type record range** (optional)
+3. **Click** "🔢 Display with Hex"
+4. **Result**: See data with hex codes
+
+### Input Display Hex
+
+**Purpose**: See your original input file with hex values
+
+1. **Type the file name** in the File Name field
+2. **Type record range** (optional)
+3. **Click** "📄 Input Display Hex"
+4. **Result**: See original data with hex codes and field information
+
+---
+
+## 🛠️ Advanced Features
+
+### Particular Records
+
+**Purpose**: Convert only specific records from a file
+
+1. **Type the file name**
+2. **Type the record range** in the Records field (e.g., `1-100`)
+3. **Click** "📋 Particular Records"
+4. **Result**: Only those records are converted
+
+### Update Paths
+
+**Purpose**: Change where the application looks for files
+
+1. **Click** "⚙️ Update Paths" (opens new screen)
+2. **Update any paths** you want to change
+3. **Click** "💾 Save Changes"
+4. **Result**: New paths are saved to path.txt
+
+### View Logs
+
+**Purpose**: See what the application has been doing
+
+1. **Click** "📋 View Logs"
+2. **Result**: Shows the last 10,000 log entries from today's log file
+3. **What you'll see**:
+   - Timestamps for each operation
+   - Success/failure status
+   - Detailed error messages if something went wrong
+   - Commands that were executed
+
+**Understanding the Logs**:
+- Each operation is separated by lines of equal signs (=)
+- Look for "STATUS: SUCCESS" or "STATUS: FAILED"
+- Error messages help diagnose what went wrong
+- Use scroll controls to navigate through the log
+
+---
+
+## 💡 Tips and Best Practices
+
+### File Naming
+- ✅ Use simple names without spaces: `CUSTOMER_DATA`
+- ❌ Avoid: `Customer Data (New).txt`
+- Use uppercase for consistency
+- Keep names short but descriptive
+
+### Organization
+- Keep one project per folder
+- Don't mix different projects in the same input folder
+- Name your projects clearly (e.g., `OCC`, `RBS`, `MC`)
+
+### Before Conversion
+- ✅ Verify all .txt files have matching .ff files
+- ✅ Check file names match exactly
+- ✅ Test with a small file first
+- ✅ Back up important data
+
+### Using the Output Screen
+- **Resize**: Drag the bottom-right corner to make the output box bigger/smaller
+- **Scroll**: Use scroll bars to see all the content
+- **Copy**: Click "📋 Copy" to copy results to clipboard
+- **Clear**: Click "🗑️ Clear" to remove output
+- **Navigate**: Use "⬆️ Top" and "⬇️ Bottom" to jump to start/end
+
+### Understanding Colors
+- 🟢 **Green text**: Success - everything worked!
+- 🔴 **Red text**: Error or skipped - needs attention
+- 🟡 **Orange text**: Warning - partial success
+- 🔵 **Blue text**: Information
+
+---
+
+## 🔧 Troubleshooting Common Issues
+
+### "Port already in use" or Application Won't Start
+
+**Problem**: The port you selected is being used by another program
+
+**Solutions**:
+1. **Close the existing application** using that port
+2. **Choose a different port**:
+   - When starting, enter a different number (try 5000, 8080, 3000, or 8888)
+   - Avoid common ports if you have other software running
+3. **Find what's using the port** (Advanced):
+   - Open PowerShell as Administrator
+   - Type: `netstat -ano | findstr :3355` (replace 3355 with your port)
+   - This shows what program is using the port
+
+### Application Won't Start
+
+**Problem**: Double-clicking file_conversion.exe does nothing or shows an error
+
+**Solutions**:
+1. **Run as Administrator** (right-click → Run as Administrator)
+2. **Check for missing files**:
+   - Make sure `dowitcher.exe` is in the same folder
+   - Check that `path.txt` exists
+3. **Try a different port** when prompted
+4. **Check antivirus** - it might be blocking the application
+
+### "Format file not found"
+
+**Problem**: The application can't find the .ff file
+
+**Solutions**:
+1. Check the .ff file exists in `FF_FILES/datamig/file-format` folder
+2. Verify the name matches the .txt file exactly
+3. Make sure the file has .ff extension
+4. Check for typos in the file name
+
+### "Input file not found"
+
+**Problem**: The application can't find the .txt file
+
+**Solutions**:
+1. Check the .txt file exists in the `input` folder
+2. Verify you typed the name correctly (without .txt)
+3. Make sure the file has .txt extension
+
+### "Skipped files" in Bulk Conversion
+
+**Problem**: Some files weren't converted
+
+**Reason**: Missing .ff files for those input files
+
+**Solution**:
+1. Look at the red messages to see which .ff files are missing
+2. Add the missing .ff files to the format folder
+3. Run bulk conversion again
+
+### Application Won't Start
+
+**Problem**: Double-clicking file_conversion.exe does nothing
+
+**Solutions**:
+1. Check if port 5000 is already in use
+2. Run as Administrator (right-click → Run as Administrator)
+3. Check antivirus isn't blocking it
+4. Verify Python is installed (if using .py file)
+
+### Can't Access in Browser
+
+**Problem**: Browser shows "Can't connect" or "Page not found"
+
+**Solutions**:
+1. **Check the black window is still open** - don't close it!
+2. **Use the exact URL shown** in the black window
+   - Look for the line: `Running on http://127.0.0.1:XXXX`
+   - Copy this exact URL into your browser
+3. **Try different formats**:
+   - `http://localhost:3355` (if port is 3355)
+   - `http://127.0.0.1:3355` (same port, different format)
+4. **Check the port number** - make sure it matches what you entered
+5. **Try a different browser** (Chrome, Edge, Firefox)
+6. **Restart the application** and try again
+
+### Conversion Takes Too Long
+
+**Problem**: Bulk conversion seems stuck
+
+**Solutions**:
+1. Wait - large files take time
+2. Check the black window for progress
+3. Maximum timeout is 5 minutes per file
+4. Very large files might hit the timeout
+
+### Wrong Data in Output
+
+**Problem**: Converted data doesn't look right
+
+**Solutions**:
+1. Verify you're using the correct .ff format file
+2. Check the code page is correct (usually CP0037)
+3. Use "Display with Hex" to see raw data
+4. Compare with source using datamatch folders
+
+---
+
+## ❓ Frequently Asked Questions
+
+### Q1: Do I need to know programming?
+**A:** No! This tool is designed for non-technical users. Just follow the steps in this guide.
+
+### Q2: What file formats can I convert?
+**A:** The tool converts EBCDIC mainframe files (.txt) to ASCII format using format definition files (.ff).
+
+### Q3: Can I convert files from different mainframes?
+**A:** Yes, as long as you have the correct .ff format files for each file type.
+
+### Q4: How many files can I convert at once?
+**A:** You can convert as many files as you have. Bulk conversion processes all .txt files in the input folder.
+
+### Q5: Where do converted files go?
+**A:** Converted files are saved in the `output` folder with the same name as the input file.
+
+### Q6: Can I undo a conversion?
+**A:** The tool doesn't delete or modify input files. Original files remain in the `input` folder unchanged.
+
+### Q7: What if I make a mistake?
+**A:** Original files are never modified. You can always run the conversion again.
+
+### Q8: How do I know if conversion was successful?
+**A:** Look for green "✅ SUCCESS" messages. Red "❌" messages indicate errors.
+
+### Q9: Can multiple people use this at the same time?
+**A:** Only one person can use one instance at a time. Each user needs their own copy.
+
+### Q10: Where are the log files?
+**A:** In the `logs` folder. Files are named `workflows_YYYYMMDD.log` (e.g., `workflows_20251114.log`). When you click "View Logs", you see the last 10,000 entries from today's log file.
+
+### Q11: How do I stop the application?
+**A:** Close the black window (terminal) or press Ctrl+C in it.
+
+### Q14: Can I change the port number?
+**A:** Yes! When you start the application, it asks you to enter a port number. Press Enter for default (3355) or type a different number. Common choices are 5000, 8080, 3000, or 8888.
+
+### Q15: What if the default port is already in use?
+**A:** When starting the application, enter a different port number when prompted. Try 5000, 8080, or any number between 1 and 65535 that isn't being used by another program.
+
+### Q16: Can multiple people use different ports on the same computer?
+**A:** Yes! Each person can start their own instance on a different port. For example: Person 1 uses port 3355, Person 2 uses port 5000, Person 3 uses port 8080.
+
+### Q19: How much disk space do I need?
+**A:** The .exe file is Windows only. You can run the Python script on Mac/Linux if Python is installed.
+
+### Q18: Do I need internet connection?
+**A:** No. Everything runs on your local computer.
+**A:** Depends on your file sizes. As a rule: 2-3x the size of your input files.
+
+### Q15: Can I customize the folder structure?
+**A:** Yes, edit the `path.txt` file or use the "Update Paths" feature.
+
+---
+
+## 📋 Quick Reference Card
+
+### Common Tasks
+
+| Task | Steps |
+|------|-------|
+| **Start Application** | Double-click `file_conversion.exe` → Choose port (or press Enter for 3355) → Open browser → Go to `http://localhost:XXXX` |
+| **Convert One File** | Type file name → Click "Run Dowitcher" |
+| **Convert Many Files** | Type project name → Click "Bulk Conversion" |
+| **View Output** | Type file name → Click "Display Output" |
+| **Create New Project** | Type project name → Click "Create Folder Structure" |
+| **Open Folders** | Type project name → Click "Open Project Folders" |
+| **Rename Format File** | Click "Rename .FF File" → Fill form → Click Rename |
+| **View Logs** | Click "View Logs" |
+| **Stop Application** | Close the black window |
+
+### File Extensions
+
+| Extension | Description | Location |
+|-----------|-------------|----------|
+| `.txt` | Input files (EBCDIC) | `input` folder |
+| `.ff` | Format definition files | `FF_FILES/datamig/file-format` |
+| `.log` | Application logs | `logs` folder |
+| `.csv` | CSV mapping files | Root or application folder |
+
+### Button Quick Guide
+
+| Button Icon | Name | Purpose |
+|-------------|------|---------|
+| 📁 | Create Folder Structure | Makes all folders for new project |
+| 🗂️ | Open Project Folders | Opens folders in Explorer |
+| 🔧 | Run Dowitcher | Converts one file |
+| 📦 | Bulk Conversion | Converts all files |
+| 👁️ | Display Output | Shows converted file |
+| 🔢 | Display with Hex | Shows data with hex |
+| 📋 | Particular Records | Converts specific records |
+| 📄 | Input Display Hex | Shows input with hex |
+| ⚙️ | Update Paths | Changes folder locations |
+| 📋 | View Logs | Shows last 10,000 log entries |
+
+---
+
+## 🎓 Learning Path for New Users
+
+### Day 1: Getting Familiar
+1. Start the application (practice choosing a port number)
+2. Open it in your browser using the correct URL
+3. Explore the main screen
+4. Read each button description
+5. Create a test folder structure
+6. Open the folders to see what was created
+7. Practice stopping and restarting the application
+
+### Day 2: First Conversion
+1. Get a small test file (.txt and .ff)
+2. Place files in correct folders
+3. Convert the file using "Run Dowitcher"
+4. View the output
+5. Check the output folder for the converted file
+
+### Day 3: Bulk Operations
+1. Add 3-5 test files
+2. Run bulk conversion
+3. Review the summary
+4. Open output folder to see results
+5. Try viewing different files
+
+### Day 4: Advanced Features
+1. Try "Display with Hex"
+2. Use "Particular Records" with a range
+3. View the application logs
+4. Try updating paths
+5. Explore the log entries to understand what operations were performed
+
+### Week 2: Production Use
+1. Start with your real project
+2. Create proper folder structure
+3. Organize your files
+4. Run conversions in batches
+5. Verify results thoroughly
+
+---
+
+## 📞 Getting Help
+
+### Before Asking for Help
+
+1. **Check this guide** - Search for your issue
+2. **Check the logs** - Click "View Logs" to see what happened
+3. **Try again** - Sometimes simply trying again works
+4. **Note error messages** - Copy the exact error text
+
+### What to Include When Asking for Help
+
+1. What you were trying to do
+2. What button you clicked
+3. What error message appeared
+4. The last few lines from the log file
+5. Screenshot if possible
+
+### Contact
+
+- **Technical Support**: Astadia TEAM
+- **Log Files Location**: `C:\File_conversion\logs\`
+
+---
+
+## ✅ Best Practices Checklist
+
+Before starting work:
+- [ ] Application is running
+- [ ] Browser is open to `http://localhost:5000`
+- [ ] Input files are in the `input` folder
+- [ ] Format files are in the `FF_FILES/datamig/file-format` folder
+- [ ] File names match (without extensions)
+- [ ] Backup of important data exists
+
+After conversion:
+- [ ] Check for success messages (green text)
+- [ ] Verify file count in summary
+- [ ] Review any skipped files (red text)
+- [ ] Check output folder for converted files
+- [ ] Compare source and target if needed
+- [ ] Save/archive log file if important
+
+---
+
+## 🎯 Success Tips
+
+1. **Start Small**: Test with 1-2 files before processing hundreds
+2. **Stay Organized**: One project per folder, clear naming
+3. **Check Names**: File names must match exactly (case matters!)
+4. **Read Messages**: Success/error messages tell you what happened
+5. **Use Logs**: When in doubt, check the log file
+6. **Keep Backups**: Never delete original files
+7. **Be Patient**: Large files take time to convert
+8. **Ask Questions**: Better to ask than make assumptions
+
+---
+
+**Remember**: This tool is designed to make your work easier. Take time to learn it, and it will save you hours of manual work!
+
+**Good luck with your conversions! 🚀**
+
+---
+
+## 📝 What's New in Version 2.0
+
+### Improvements:
+- ✅ **Streamlined Interface**: Removed unused features for a cleaner, more focused experience
+- ✅ **Enhanced Log Viewing**: Now displays last 10,000 log entries (was 100)
+- ✅ **Better Performance**: Optimized code with 12% reduction in size
+- ✅ **Consistent Branding**: "File Conversion Studio" throughout the application
+- ✅ **Improved Documentation**: Updated guides with current features
+- ✅ **Port Configuration**: Choose your own port number at startup (default: 3355)
+
+### Removed Features:
+- Roy's EBCDIC Tool (no longer needed)
+- FF File Modify function (no longer needed)
+- Rename FF File (use file explorer instead)
+
+### Why These Changes?
+These features were rarely used and added complexity. By removing them, we've made the tool:
+- Faster to load
+- Easier to use
+- More reliable
+- Simpler to maintain
+
+**Focus**: The tool now focuses on what it does best - converting mainframe files efficiently and reliably!
+
+---
+
+*Document Version: 2.0*  
+*Last Updated: November 14, 2025*  
+*© Astadia TEAM - All Rights Reserved*

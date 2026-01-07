@@ -1,0 +1,71 @@
+flowchart TB
+    Browser["🌐 Web Browser Port 3344"]
+    
+    subgraph Flask["Flask Web Application"]
+        App["Flask App file.py"]
+        MainPage["Main Dashboard"]
+        ModifyPage["Modify Template"]
+        RenamePage["Rename Template"]
+        RoyPage["ROY Template"]
+    end
+    
+    subgraph Core["Core Functions"]
+        ReadPaths["read_paths"]
+        RenameFunc["rename_file"]
+        ModifyFunc["run_file_modify"]
+        RexxFunc["run_rexx"]
+        DowitcherFunc["run_dowitcher"]
+    end
+    
+    subgraph External["External Tools"]
+        FileMod["File_modify.py"]
+        RexxExe["rexx.exe"]
+        RexxScript["RoysEbcdicRecTypesV6.rexx"]
+        DowitcherExe["dowitcher.exe"]
+    end
+    
+    subgraph Files["File System"]
+        Config["path.txt Config"]
+        FormatPath["FORMAT_PATH .ff files"]
+        InputPath["INPUT_PATH .txt files"]
+        OutputPath["OUTPUT_PATH output"]
+    end
+    
+    Browser -->|HTTP Request| App
+    App --> MainPage
+    App --> ModifyPage
+    App --> RenamePage
+    App --> RoyPage
+    
+    MainPage --> ReadPaths
+    MainPage --> RenameFunc
+    MainPage --> DowitcherFunc
+    ModifyPage --> ModifyFunc
+    RenamePage --> RenameFunc
+    RoyPage --> RexxFunc
+    
+    ReadPaths --> Config
+    RenameFunc --> FormatPath
+    ModifyFunc --> FileMod
+    RexxFunc --> RexxExe
+    RexxFunc --> RexxScript
+    DowitcherFunc --> DowitcherExe
+    
+    FileMod --> FormatPath
+    RexxExe --> InputPath
+    RexxExe --> OutputPath
+    DowitcherExe --> FormatPath
+    DowitcherExe --> InputPath
+    DowitcherExe --> OutputPath
+    
+    classDef userLayer fill:#3b82f6,stroke:#1e40af,stroke-width:3px,color:#fff
+    classDef flaskLayer fill:#2563eb,stroke:#1e40af,stroke-width:2px,color:#fff
+    classDef coreLayer fill:#1e40af,stroke:#1e3a8a,stroke-width:2px,color:#fff
+    classDef externalLayer fill:#7c3aed,stroke:#5b21b6,stroke-width:2px,color:#fff
+    classDef fileLayer fill:#059669,stroke:#047857,stroke-width:2px,color:#fff
+    
+    class Browser userLayer
+    class App,MainPage,ModifyPage,RenamePage,RoyPage flaskLayer
+    class ReadPaths,RenameFunc,ModifyFunc,RexxFunc,DowitcherFunc coreLayer
+    class FileMod,RexxExe,RexxScript,DowitcherExe externalLayer
+    class Config,FormatPath,InputPath,OutputPath fileLayer

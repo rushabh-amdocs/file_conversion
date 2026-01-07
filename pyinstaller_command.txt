@@ -1,0 +1,22 @@
+# PyInstaller Command for File Conversion Tool
+# ============================================
+
+# Direct command (single line):
+python -m PyInstaller --onefile --name file_conversionv1  --hidden-import=flask --hidden-import=werkzeug --hidden-import=jinja2 --collect-all flask --console file.py
+
+# Explanation of options:
+# --onefile              : Creates a single executable file
+# --name                 : Names the output executable as "file_conversionv1.exe"
+# --add-data             : Includes required data files (format: "source;destination")
+# --hidden-import        : Explicitly includes Flask dependencies
+# --collect-all flask    : Collects all Flask-related files
+# --console              : Shows console window (for Flask debug output)
+# file.py                : Main Python script to convert
+
+# After building:
+# - Executable will be in: dist\file_conversionv1.exe
+# - Run it to start Flask server on http://127.0.0.1:5000
+# - Make sure to copy the 'occ' folder to the same directory as the exe
+
+# Prerequisites:
+# python -m pip install pyinstaller flask
