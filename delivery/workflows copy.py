@@ -12,30 +12,10 @@ from flask import Flask, render_template_string, request, redirect, url_for
 # Configure logging
 def setup_logging():
     """Setup logging configuration with timestamps"""
-    # Try to read LOG_PATH from path.txt first
-    log_dir = None
-    path_file = os.path.join(os.getcwd(), 'path.txt')
-    if os.path.exists(path_file):
-        try:
-            with open(path_file, 'r') as f:
-                for line in f:
-                    if line.strip().startswith('LOG_PATH='):
-                        log_dir = line.split('=', 1)[1].strip().replace('\r', '')
-                        break
-        except Exception as e:
-            print(f"Warning: Could not read LOG_PATH from path.txt: {e}")
-    
-    # Fallback to logs folder in current directory if LOG_PATH not found
-    if not log_dir:
-        log_dir = os.path.join(os.getcwd(), 'logs')
-    
     # Create logs directory if it doesn't exist
-    try:
-        os.makedirs(log_dir, exist_ok=True)
-    except Exception as e:
-        print(f"Warning: Could not create logs directory: {e}")
-        # Fallback to current directory if logs directory cannot be created
-        log_dir = os.getcwd()
+    log_dir = os.path.join(os.getcwd(), 'logs')
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
     
     # Create log file with current date
     log_filename = f"workflows_{datetime.datetime.now().strftime('%Y%m%d')}.log"
@@ -50,19 +30,12 @@ def setup_logging():
         logger.removeHandler(handler)
     
     # Create file handler with custom format
-    try:
-        file_handler = logging.FileHandler(log_filepath, encoding='utf-8')
-        file_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
-        file_handler.setFormatter(file_formatter)
-        
-        # Add only file handler (no console output to avoid cluttering)
-        logger.addHandler(file_handler)
-    except Exception as e:
-        print(f"Warning: Could not create log file handler: {e}")
-        # Create a console handler as fallback
-        console_handler = logging.StreamHandler()
-        console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S'))
-        logger.addHandler(console_handler)
+    file_handler = logging.FileHandler(log_filepath, encoding='utf-8')
+    file_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+    file_handler.setFormatter(file_formatter)
+    
+    # Add only file handler (no console output to avoid cluttering)
+    logger.addHandler(file_handler)
     
     # Disable Flask's werkzeug logger from writing to our log
     werkzeug_logger = logging.getLogger('werkzeug')
@@ -541,15 +514,6 @@ def run_dowitcher(paths, new_name, records=None, display=False, hex_display=Fals
     log_path = paths.get('LOG_PATH', '')
     source = paths.get('source', '')
     target = paths.get('target', '')
-    
-    # Log operation start
-    operation_name = "DOWITCHER DISPLAY" if display else "DOWITCHER CONVERT"
-    logger.info(f"{'='*60}")
-    logger.info(f"{operation_name} OPERATION STARTED")
-    logger.info(f"File: {new_name}")
-    if records:
-        logger.info(f"Records: {records}")
-    logger.info(f"{'='*60}")
     
     if not format_path or not os.path.exists(format_path):
         return f'Error: FORMAT_PATH is invalid or does not exist: {format_path}'

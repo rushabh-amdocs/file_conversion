@@ -1,0 +1,15 @@
+FORMAT_PATH=C:/File_conversion/delivery/occ/FF_FILES/datamig/file-format
+INPUT_PATH=C:/File_conversion/delivery/occ/input
+OUTPUT_PATH=C:/File_conversion/delivery/occ/output
+LOG_PATH=C:/File_conversion/delivery/logs
+target=C:/File_conversion/delivery/occ/datamatch/target
+source=C:/File_conversion/delivery/occ/datamatch/source
+NOTEPAD_PATH=C:/File_conversion/delivery/logs
+CSV_file=C:/File_conversion/delivery/occ.csv
+copybook=C:/File_conversion/delivery/occ/copybook
+expfd=C:/File_conversion/delivery/occ/expfd
+application=C:/File_conversion/delivery/occ
+DATATURN_EXE_PATH=C:/Program Files/Anubex/DataTurn/bin/dataturn.exe
+DATATURN_CONFIG_FILE=rushabh.configuration
+base_path=C:/File_conversion/delivery
+all_file=paths
