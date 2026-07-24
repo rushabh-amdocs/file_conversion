@@ -1,6 +1,7 @@
 import os
 import csv
 import sys
+import re
 
 
 # Function to rename fillers in the XML content
@@ -23,16 +24,26 @@ def allow_blanks(lines):
         if 'type="PS"' in line:
             modified_lines.append(line.replace('type="PS"', 'type="PS" allow-blanks="yes"'))
         elif 'type="NU"' in line:
-            modified_lines.append(line.replace('type="NU"', 'type="NU" allow-blanks="yes"'))
+            modified_lines.append(line.replace('type="NU"', 'type="NU" allow-blanks="yes" '))
         elif 'type="NUE"' in line:
-            modified_lines.append(line.replace('type="NUE"', 'type="NUE" allow-blanks="yes"'))
+            modified_lines.append(line.replace('type="NUE"', 'type="NUE" allow-blanks="yes" '))
         elif 'type="NS"' in line:
             modified_lines.append(line.replace('type="NS"', 'type="NSE" allow-blanks="yes"'))
         elif 'type="NSE"' in line:
-            modified_lines.append(line.replace('type="NSE"', 'type="NSE" allow-blanks="yes"'))
+            modified_lines.append(line.replace('type="NSE"', 'type="NSE" allow-blanks="yes" '))
         else:
             modified_lines.append(line)
     return modified_lines
+
+# Function to add allow-high-values="yes" for all types in the XML content
+def allow_high_values(lines):
+    modified_lines = []
+    for line in lines:
+        if re.search(r'type="[^"]+"', line) and 'allow-high-values="yes"' not in line:
+            line = re.sub(r'(type="[^"]+")', r'\1 allow-high-values="yes"', line)
+        modified_lines.append(line)
+    return modified_lines
+
 
 import csv
 
@@ -128,6 +139,7 @@ def modify_FB(file_path, csv_file, output_path, condition_type):
 
     modified_lines = rename_fillers(modified_lines)
     modified_lines = allow_blanks(modified_lines)
+    modified_lines = allow_high_values(modified_lines)
     if condition_type == "S":
         modified_lines = add_conditions_from_csv_single(modified_lines, csv_file)
     elif condition_type == "M":
@@ -160,6 +172,7 @@ def modify_VB(file_path, csv_file, output_path, condition_type):
 
     modified_lines = rename_fillers(modified_lines)
     modified_lines = allow_blanks(modified_lines)
+    modified_lines = allow_high_values(modified_lines)
     if condition_type == "S":
         modified_lines = add_conditions_from_csv_single(modified_lines, csv_file)
     elif condition_type == "M":
